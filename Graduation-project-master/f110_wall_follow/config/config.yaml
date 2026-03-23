@@ -1,0 +1,32 @@
+# Config File for f110_wall_follow package
+
+# Lidar Scan Truncation Coverage Angle
+# (Assumes symmetric coverage about the center)
+truncated_coverage_angle : 3.0
+
+# Ranges Smoothing Filter Size
+# Dimension : 1 x (2*smoothing_filter_size-1)
+smoothing_filter_size : 5
+
+# Wall Follow PID controller gains
+kp : 0.5
+ki : 0.0
+kd : 0.0
+
+# Wall Follow Parameters
+
+# Hokuyo 10LX has 270 degrees scan
+angle_range : 360
+
+# Desired Wall Follow distance in meters
+desired_distance_right : 0.9
+desired_distance_left : 1.3
+
+# Look-ahead Distance
+lookahead_distance : 0.5
+
+# Car Length
+car_length : 0.50
+
+# Desired Car Velocity based on Error
+error_based_velocities : {low: 0.5, medium: 0.5, high: 0.5}

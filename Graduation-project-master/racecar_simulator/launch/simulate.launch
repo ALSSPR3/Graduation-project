@@ -1,0 +1,22 @@
+<launch>
+  <!-- Listen to messages from joysicks -->
+  <node pkg="joy" name="joy_node" type="joy_node"/>
+
+  <!-- Launch a map from the maps folder-->
+	<node pkg="map_server" type="map_server" name="map_server" args="$(find wecar)/map/wall.yaml"/>
+
+  <!-- Launch the racecar model -->
+	<node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" />
+	<node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
+	<param name="robot_description" command="$(find xacro)/xacro $(find wecar)/urdf/racecar.xacro"/>
+
+  <!-- Begin the simulator with the parameters from params.yaml -->
+	<node pkg="racecar_simulator" name="racecar_simulator" type="simulate" output="screen">
+	<rosparam command="load" file="$(find racecar_simulator)/params.yaml"/>
+	</node>
+  
+
+	<node pkg="rviz" type="rviz" name="rviz" args="-d /home/nvidia/wecar_ws/src/wecar/rviz/wall_follower.rviz"/>
+
+
+</launch>
