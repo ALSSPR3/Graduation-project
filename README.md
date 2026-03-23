@@ -30,7 +30,7 @@
 * `vesc`: 하드웨어 모터 제어 및 데이터 통신
 
 ## 📄 프로젝트 문서 (Documents)
-* [📊 최종 발표 자료 (PPT)](./Graduation-project-master/docs/발표자료.pptx)
+* [📊 최종 발표 자료 (PPT)](./Graduation-project-master/docs/발표자료.pptx.pdf)
 * [📝 졸업 논문 보고서 (HWP)](./Graduation-project-master/docs/최종보고서.hwpx)
 
 ## 🚀 실행 방법
