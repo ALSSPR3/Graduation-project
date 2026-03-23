@@ -1,10 +1,3 @@
-네, 요청하신 내용을 바탕으로 바로 복사해서 사용할 수 있는 **`README.md`** 최종본 파일 내용을 만들어 드립니다.
-
-아래 박스 안의 내용을 전체 복사해서 `README.md` 파일에 붙여넣으세요.
-
------
-
-````markdown
 # 🏎️ 졸업 프로젝트: ROS 기반 자율주행 레이스카
 > LiDAR와 Camera 센서 퓨전을 활용한 실시간 장애물 회피 및 차선 인식 자율주행 시스템 개발
 
@@ -12,18 +5,31 @@
 * **2022년 09월 28일 ~ 2023년 06월 01일**
 
 ## 🛠️ 기술 스택 (Tech Stack)
-* **OS:** Ubuntu 18.04 / 20.04
-* **Platform:** ROS Melodic / Noetic
-* **Language:** C++, Python
-* **Hardware:** NVIDIA Jetson, ZED Camera, RPLidar, VESC
+* **OS:** Ubuntu 18.04 / 20.04 (ROS Melodic / Noetic)
+* **Language:** C++, Python, Shell Script
+* **Hardware:** NVIDIA Jetson, ZED Stereo Camera, RPLidar A1/A2, VESC (Electronic Speed Controller)
+* **Libraries:** OpenCV, PCL (Point Cloud Library), Eigen
+
+## 🧠 주요 알고리즘 (Key Algorithms)
+
+### 1️⃣ Wall Following & PID Control
+* **거리 유지:** LiDAR 데이터를 분석하여 벽과의 거리를 실시간으로 계산합니다.
+* **조향 제어:** P(비례), I(적분), D(미분) 제어기를 통해 주행 오차를 최소화하고 부드러운 코너링을 구현했습니다.
+
+### 2️⃣ Localization (Particle Filter)
+* **위치 추정:** `range_libc` 기반의 고속 레이 캐스팅을 사용하여 로봇의 현재 위치를 확률적으로 추정합니다.
+* **정확도:** 수천 개의 파티클을 통해 동적인 환경에서도 안정적으로 로봇의 전역 좌표를 파악합니다.
+
+### 3️⃣ SLAM (Hector SLAM)
+* **지도 생성:** 별도의 Odometry 없이 LiDAR 스캔 매칭만으로 2D 점유 격자 지도(Occupancy Grid Map)를 생성합니다.
+* **경로 기록:** 실시간으로 지도를 그리며 로봇의 이동 궤적을 기록합니다.
 
 ## 📂 주요 패키지 구성
-* `racecar_simulator`: 가상 환경 시뮬레이션 및 테스트 베드
-* `lane_detection`: OpenCV 기반 실시간 차선 인식 및 경로 추종
-* `obstacle_detector`: LiDAR 데이터를 활용한 장애물 감지 및 거리 측정
-* `particle_filter`: 로봇의 위치 추정 및 SLAM(Simultaneous Localization and Mapping) 보정
-* `hector_slam`: LiDAR 기반 2D 지도 생성 및 위치 추적
-* `usb_cam` & `zed-ros-wrapper`: 카메라 드라이버 및 스테레오 매핑
+* `racecar_simulator`: 가상 환경 시뮬레이션 및 알고리즘 검증용 테스트 베드
+* `lane_detection`: OpenCV 기반 차선 인식 및 경로 추종 알고리즘
+* `obstacle_detector`: 장애물 감지 및 충돌 방지(E-Stop) 시스템
+* `zed-ros-wrapper`: 스테레오 카메라를 이용한 깊이(Depth) 정보 추출
+* `vesc`: 하드웨어 모터 제어 및 데이터 통신
 
 ## 🚀 실행 방법
 
@@ -35,24 +41,3 @@ catkin_make
 
 # 환경 변수 적용
 source devel/setup.bash
-````
-
-### 2\. 시뮬레이션 및 노드 실행
-
-```bash
-# 가제보(Gazebo) 시뮬레이션 환경 실행
-roslaunch racecar_gazebo racecar_run.launch
-
-# 장애물 감지 노드 실행
-roslaunch obstacle_detector nodelet.launch
-```
-
-## 🎥 결과물
-
-> 여기에 프로젝트 주행 사진이나 결과물 이미지를 추가해 보세요\!
-> 예: 
-
-````
-
-
-**README 파일이 잘 생성되었나요?** 만약 프로젝트 설명에 더 추가하고 싶은 기능(예: 알고리즘 상세 설명 등)이 있다면 말씀해 주세요\!
