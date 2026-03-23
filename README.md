@@ -7,7 +7,7 @@
 ## 🛠️ 기술 스택 (Tech Stack)
 * **OS:** Ubuntu 18.04 / 20.04 (ROS Melodic / Noetic)
 * **Language:** C++, Python, Shell Script
-* **Hardware:** NVIDIA Jetson, ZED Stereo Camera, RPLidar A1/A2, VESC (Electronic Speed Controller)
+* **Hardware:** NVIDIA Jetson, ZED Stereo Camera, RPLidar A1/A2, VESC
 * **Libraries:** OpenCV, PCL (Point Cloud Library), Eigen
 
 ## 🧠 주요 알고리즘 (Key Algorithms)
@@ -22,27 +22,21 @@
 
 ### 3️⃣ SLAM (Hector SLAM)
 * **지도 생성:** 별도의 Odometry 없이 LiDAR 스캔 매칭만으로 2D 점유 격자 지도(Occupancy Grid Map)를 생성합니다.
-* **경로 기록:** 실시간으로 지도를 그리며 로봇의 이동 궤적을 기록합니다.
 
 ## 📂 주요 패키지 구성
 * `racecar_simulator`: 가상 환경 시뮬레이션 및 알고리즘 검증용 테스트 베드
 * `lane_detection`: OpenCV 기반 차선 인식 및 경로 추종 알고리즘
 * `obstacle_detector`: 장애물 감지 및 충돌 방지(E-Stop) 시스템
-* `zed-ros-wrapper`: 스테레오 카메라를 이용한 깊이(Depth) 정보 추출
 * `vesc`: 하드웨어 모터 제어 및 데이터 통신
+
+## 📄 프로젝트 문서 (Documents)
+* [📊 최종 발표 자료 (PPT)](./Graduation-project-master/docs/발표자료.pptx)
+* [📝 졸업 논문 보고서 (HWP)](./Graduation-project-master/docs/최종보고서.hwpx)
 
 ## 🚀 실행 방법
 
 ### 1. 워크스페이스 빌드
 ```bash
-# 워크스페이스 이동 및 빌드
 cd ~/catkin_ws
 catkin_make
-
-# 환경 변수 적용
 source devel/setup.bash
-
-## 📄 관련 문서 (Documents)
-* [최종 발표 자료 (PPT)](./path/to/your/presentation.pptx)
-* [졸업 논문 보고서 (HWP)](./path/to/your/report.hwp)
-* [시스템 설계서 (PDF)](./path/to/your/design.pdf)
